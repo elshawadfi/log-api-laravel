@@ -33,6 +33,7 @@ $duration = $request->end - $request->start;
 $url = $request->fullUrl();
 $method = $request->getMethod();
 $ip = $request->getClientIp();
+$req = json_encode($request->all());
 $log = "{$ip}: {$method}@{$url} - {$duration}ms \n".
 "Request : {[$request->all()]} \n".
 "Response : {$response->getContent()} \n";
