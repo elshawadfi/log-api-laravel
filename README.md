@@ -33,9 +33,12 @@ $duration = $request->end - $request->start;
 $url = $request->fullUrl();
 $method = $request->getMethod();
 $ip = $request->getClientIp();
-$req = json_encode($request->all());
+$req = $request->all();
+$req = json_encode($req);
+$headers = json_encode(\Request::header());
 $log = "{$ip}: {$method}@{$url} - {$duration}ms \n".
-"Request : {[$request->all()]} \n".
+"Request : {[$req]} \n".
+"Headers : {[$headers]} \n".
 "Response : {$response->getContent()} \n";
 Log::info($log);
 }
